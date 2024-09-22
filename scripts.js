@@ -48,7 +48,8 @@ form.onsubmit =(event) =>{
 
 function convertCurrency (amount, price, symbol){
     try{
-        description.textContent = `${symbol} 1 = ${price}`
+        //Exibindo a cotação da moeda selecionada.
+        description.textContent = `${symbol} 1 = ${formatCurrencyBRL(price)}`
         
         
         
@@ -64,3 +65,12 @@ function convertCurrency (amount, price, symbol){
 
 }
 
+// Formata a moeda em Real Brasileiro.
+function formatCurrencyBRL(value){
+    // Converte para número para utilizar o toLocalesString para formatar no pradão BRL.
+    return Number(value).toLocaleString("pt-BR", {
+        style:"currency",
+        currency:"BRL"
+    })
+
+}
